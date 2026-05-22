@@ -1,35 +1,43 @@
-import { BrowserRouter } from "react-router-dom"
+import { Box, Toolbar } from "@mui/material"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Navbar from "./components/Navbar"
 import Sidebar from "./components/Sidebar"
-import DashboardCards from "./components/DashboardCards"
+
+import Home from "./pages/Home"
+import Users from "./pages/Users"
+import Products from "./pages/Products"
 
 function App() {
   return (
-
     <BrowserRouter>
 
-      <div>
+      <Box sx={{ display: "flex" }}>
 
         <Navbar />
 
         <Sidebar />
-        <div
-        style={{
-          marginLeft: "260px",
-          padding: "20px",
-          marginTop: "80px"
-        }}
+
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: 3
+          }}
         >
+          <Toolbar />
 
-          <DashboardCards />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/products" element={<Products />} />
+          </Routes>
 
-        </div>
+        </Box>
 
-      </div>
+      </Box>
 
     </BrowserRouter>
-
   )
 }
 
